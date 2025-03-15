@@ -1,5 +1,6 @@
+'use client'
+
 import Link from 'next/link'
-import Image from 'next/image'
 
 export default function Footer() {
   return (
@@ -8,12 +9,9 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
             <div className="flex items-center space-x-2 mb-4">
-              <Image
-                src="/images/fox-logo.png"
-                alt="창공호 로고"
-                width={40}
-                height={40}
-              />
+              <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
+                <span className="text-white text-xl font-bold">C</span>
+              </div>
               <span className="text-xl font-bold">창공호</span>
             </div>
             <p className="text-gray-400">

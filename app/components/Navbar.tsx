@@ -1,5 +1,6 @@
+'use client'
+
 import Link from 'next/link'
-import Image from 'next/image'
 
 export default function Navbar() {
   return (
@@ -7,12 +8,9 @@ export default function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           <Link href="/" className="flex items-center space-x-2">
-            <Image
-              src="/images/fox-logo.png"
-              alt="창공호 로고"
-              width={40}
-              height={40}
-            />
+            <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
+              <span className="text-white text-xl font-bold">C</span>
+            </div>
             <span className="text-xl font-bold">창공호</span>
           </Link>
           
