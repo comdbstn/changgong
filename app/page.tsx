@@ -58,8 +58,24 @@ export default function Home() {
         
         {/* Slider Controls */}
         <div className="absolute bottom-0 left-0 right-0 z-10 flex justify-between p-6 md:p-12">
-          <div className="text-4xl font-bold">{currentSlide}</div>
-          <div className="text-4xl font-bold">{totalSlides}</div>
+          <div className="flex items-center space-x-4">
+            <button 
+              onClick={() => setCurrentSlide(current => (current === 1 ? totalSlides : current - 1))}
+              className="text-white hover:text-gray-300 transition-colors"
+            >
+              ←
+            </button>
+            <div className="text-4xl font-bold">{currentSlide}</div>
+          </div>
+          <div className="flex items-center space-x-4">
+            <div className="text-4xl font-bold">{totalSlides}</div>
+            <button 
+              onClick={() => setCurrentSlide(current => (current === totalSlides ? 1 : current + 1))}
+              className="text-white hover:text-gray-300 transition-colors"
+            >
+              →
+            </button>
+          </div>
         </div>
         
         {/* Slider Images */}
