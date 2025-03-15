@@ -5,31 +5,55 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
-      <section className="h-screen bg-gray-900 text-white flex items-center justify-center relative">
-        <div className="absolute inset-0 opacity-30">
-          <Image
-            src="/images/fox-pattern.png"
-            alt="Background Pattern"
-            fill
-            className="object-cover"
-          />
+      <section className="h-screen relative overflow-hidden">
+        {/* 그라데이션 배경 */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900">
+          {/* SVG 패턴 오버레이 */}
+          <div className="absolute inset-0 opacity-10">
+            <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                  <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="1"/>
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#grid)" />
+            </svg>
+          </div>
+          
+          {/* 동적 원형 그라데이션 */}
+          <div className="absolute top-1/4 -left-1/4 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob"></div>
+          <div className="absolute top-1/3 -right-1/4 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-2000"></div>
+          <div className="absolute -bottom-1/4 left-1/3 w-96 h-96 bg-indigo-500 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-4000"></div>
         </div>
-        <div className="container mx-auto text-center z-10">
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-6xl font-bold mb-6"
-          >
-            CHANGGONG
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-xl mb-8"
-          >
-            개개인의 브랜드를 가치있게 만드는 창업 학회
-          </motion.p>
+
+        {/* 컨텐츠 */}
+        <div className="relative h-full flex items-center justify-center">
+          <div className="container mx-auto text-center text-white px-4">
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-6xl font-bold mb-6"
+            >
+              CHANGGONG
+            </motion.h1>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="text-xl mb-8"
+            >
+              개개인의 브랜드를 가치있게 만드는 창업 학회
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+            >
+              <button className="bg-white text-blue-900 px-8 py-3 rounded-full text-lg font-semibold hover:bg-opacity-90 transition-colors">
+                시작하기
+              </button>
+            </motion.div>
+          </div>
         </div>
       </section>
 
