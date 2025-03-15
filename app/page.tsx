@@ -24,14 +24,6 @@ export default function Home() {
   
   const totalSlides = 3
   
-  const nextSlide = () => {
-    setCurrentSlide(current => (current === totalSlides ? 1 : current + 1))
-  }
-  
-  const prevSlide = () => {
-    setCurrentSlide(current => (current === 1 ? totalSlides : current - 1))
-  }
-
   const [brandRef, brandInView] = useInView({
     triggerOnce: true,
     threshold: 0.1
@@ -78,8 +70,8 @@ export default function Home() {
                 <Image 
                   src="/images/logo/changgong-logo.png"
                   alt="Magazine Cover"
-                  layout="fill"
-                  objectFit="cover"
+                  fill
+                  sizes="100vw"
                   priority
                 />
               </div>
@@ -91,8 +83,8 @@ export default function Home() {
                 <Image 
                   src="/images/logo/changgong-logo.png"
                   alt="Magazine Cover"
-                  layout="fill"
-                  objectFit="cover"
+                  fill
+                  sizes="100vw"
                   priority
                 />
               </div>
@@ -104,8 +96,8 @@ export default function Home() {
                 <Image 
                   src="/images/logo/changgong-logo.png"
                   alt="Magazine Cover"
-                  layout="fill"
-                  objectFit="cover"
+                  fill
+                  sizes="100vw"
                   priority
                 />
               </div>
