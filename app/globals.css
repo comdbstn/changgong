@@ -7,18 +7,34 @@
   --background-rgb: 255, 255, 255;
 }
 
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+  font-family: var(--font-noto-sans-kr), sans-serif;
+}
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
 @layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
   .animation-delay-2000 {
     animation-delay: 2s;
   }
   .animation-delay-4000 {
     animation-delay: 4s;
   }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: rgb(var(--background-rgb));
 }
 
 @keyframes blob {

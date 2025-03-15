@@ -1,5 +1,8 @@
 'use client'
 
+import { useState } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 
@@ -17,6 +20,18 @@ const staggerChildren = {
 }
 
 export default function Home() {
+  const [currentSlide, setCurrentSlide] = useState(1)
+  
+  const totalSlides = 3
+  
+  const nextSlide = () => {
+    setCurrentSlide(current => (current === totalSlides ? 1 : current + 1))
+  }
+  
+  const prevSlide = () => {
+    setCurrentSlide(current => (current === 1 ? totalSlides : current - 1))
+  }
+
   const [brandRef, brandInView] = useInView({
     triggerOnce: true,
     threshold: 0.1
@@ -33,60 +48,303 @@ export default function Home() {
   })
 
   return (
-    <main className="min-h-screen">
+    <>
       {/* Hero Section */}
-      <section className="h-screen relative overflow-hidden">
-        {/* 그라데이션 배경 */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900">
-          {/* SVG 패턴 오버레이 */}
-          <div className="absolute inset-0 opacity-10">
-            <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                  <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="1"/>
-                </pattern>
-              </defs>
-              <rect width="100%" height="100%" fill="url(#grid)" />
-            </svg>
+      <section className="relative h-screen bg-gray-900 text-white">
+        <div className="absolute inset-0 z-10 flex flex-col justify-center px-6 md:px-12">
+          <div className="max-w-4xl">
+            <h1 className="text-4xl md:text-6xl font-bold mb-4">THE CULTURE, THE FUTURE</h1>
+            <p className="text-sm md:text-base mb-8 max-w-2xl">
+              창공호는 개인의 브랜드 가치를 발견하고 성장시키는 창업 학회입니다. 
+              다양한 분야의 전문가들과 함께 당신만의 브랜드를 만들어보세요.
+            </p>
+            <button className="text-sm border-b border-white pb-1 hover:opacity-75 transition-opacity">
+              READ MORE
+            </button>
+          </div>
+        </div>
+        
+        {/* Slider Controls */}
+        <div className="absolute bottom-0 left-0 right-0 z-10 flex justify-between p-6 md:p-12">
+          <div className="text-4xl font-bold">{currentSlide}</div>
+          <div className="text-4xl font-bold">{totalSlides}</div>
+        </div>
+        
+        {/* Slider Images */}
+        <div className="absolute inset-0">
+          {currentSlide === 1 && (
+            <div className="absolute inset-0 bg-gray-900">
+              <div className="absolute inset-0 opacity-50">
+                <Image 
+                  src="/images/logo/changgong-logo.png"
+                  alt="Magazine Cover"
+                  layout="fill"
+                  objectFit="cover"
+                  priority
+                />
+              </div>
+            </div>
+          )}
+          {currentSlide === 2 && (
+            <div className="absolute inset-0 bg-gray-800">
+              <div className="absolute inset-0 opacity-50">
+                <Image 
+                  src="/images/logo/changgong-logo.png"
+                  alt="Magazine Cover"
+                  layout="fill"
+                  objectFit="cover"
+                  priority
+                />
+              </div>
+            </div>
+          )}
+          {currentSlide === 3 && (
+            <div className="absolute inset-0 bg-gray-700">
+              <div className="absolute inset-0 opacity-50">
+                <Image 
+                  src="/images/logo/changgong-logo.png"
+                  alt="Magazine Cover"
+                  layout="fill"
+                  objectFit="cover"
+                  priority
+                />
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Magazine Section */}
+      <section className="py-16 bg-teal-100">
+        <div className="container mx-auto px-6">
+          <div className="mb-8">
+            <p className="text-sm text-gray-600 mb-2">Brand</p>
+            <h2 className="text-2xl font-bold">Magazine B, Magazine F, Media, Beauty</h2>
           </div>
           
-          {/* 동적 원형 그라데이션 */}
-          <div className="absolute top-1/4 -left-1/4 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob"></div>
-          <div className="absolute top-1/3 -right-1/4 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-2000"></div>
-          <div className="absolute -bottom-1/4 left-1/3 w-96 h-96 bg-indigo-500 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-4000"></div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+              <div className="mb-4 bg-white p-4">
+                <Image 
+                  src="/images/logo/changgong-logo.png"
+                  alt="Magazine Cover"
+                  width={300}
+                  height={400}
+                  className="w-full"
+                />
+              </div>
+              <div>
+                <p className="text-xs text-gray-600 mb-1">MAGAZINE B · ISSUE NO.97</p>
+                <h3 className="text-xl font-bold mb-2">RIMOWA TEST</h3>
+                <p className="text-sm text-gray-600">
+                  창공호는 개인의 브랜드 가치를 발견하고 성장시키는 창업 학회입니다. 
+                  다양한 분야의 전문가들과 함께 당신만의 브랜드를 만들어보세요.
+                </p>
+              </div>
+            </div>
+            
+            <div>
+              <div className="mb-4 bg-white p-4">
+                <Image 
+                  src="/images/logo/changgong-logo.png"
+                  alt="Magazine Cover"
+                  width={300}
+                  height={400}
+                  className="w-full"
+                />
+              </div>
+              <div>
+                <p className="text-xs text-gray-600 mb-1">MAGAZINE F · ISSUE NO.16</p>
+                <h3 className="text-xl font-bold mb-2">REPETTO</h3>
+                <p className="text-sm text-gray-600">
+                  창공호는 개인의 브랜드 가치를 발견하고 성장시키는 창업 학회입니다. 
+                  다양한 분야의 전문가들과 함께 당신만의 브랜드를 만들어보세요.
+                </p>
+              </div>
+            </div>
+            
+            <div>
+              <div className="mb-4 bg-white p-4">
+                <Image 
+                  src="/images/logo/changgong-logo.png"
+                  alt="Magazine Cover"
+                  width={300}
+                  height={400}
+                  className="w-full"
+                />
+              </div>
+              <div>
+                <p className="text-xs text-gray-600 mb-1">MAGAZINE F · ISSUE NO.15</p>
+                <h3 className="text-xl font-bold mb-2">BARBOUR</h3>
+                <p className="text-sm text-gray-600">
+                  창공호는 개인의 브랜드 가치를 발견하고 성장시키는 창업 학회입니다. 
+                  다양한 분야의 전문가들과 함께 당신만의 브랜드를 만들어보세요.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="mt-8 text-right">
+            <Link href="/shop" className="text-lg inline-flex items-center">
+              Shop <span className="ml-2">→</span>
+            </Link>
+          </div>
         </div>
+      </section>
 
-        {/* 컨텐츠 */}
-        <div className="relative h-full flex items-center justify-center">
-          <div className="container mx-auto text-center text-white px-4">
-            <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-6xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent"
-            >
-              CHANGGONG
-            </motion.h1>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-xl md:text-2xl mb-8"
-            >
-              개개인의 브랜드를 가치있게 만드는 창업 학회
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-            >
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-white text-blue-900 px-8 py-3 rounded-full text-lg font-semibold hover:shadow-lg transition-shadow"
-              >
-                시작하기
-              </motion.button>
-            </motion.div>
+      {/* Featured Section */}
+      <section className="py-16 bg-gray-800 text-white">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col md:flex-row">
+            <div className="md:w-1/2 mb-8 md:mb-0">
+              <p className="text-xs text-gray-400 mb-1">MAGAZINE F · ISSUE NO.14</p>
+              <h2 className="text-3xl font-bold mb-4">THE BALVENIE</h2>
+              <p className="text-sm text-gray-300 mb-4">
+                창공호는 개인의 브랜드 가치를 발견하고 성장시키는 창업 학회입니다. 
+                다양한 분야의 전문가들과 함께 당신만의 브랜드를 만들어보세요.
+              </p>
+              <button className="text-sm border-b border-white pb-1 hover:opacity-75 transition-opacity">
+                SHOP NOW
+              </button>
+            </div>
+            <div className="md:w-1/2">
+              <Image 
+                src="/images/logo/changgong-logo.png"
+                alt="Featured Image"
+                width={600}
+                height={400}
+                className="w-full"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Jobs Section */}
+      <section className="py-16 bg-gray-100">
+        <div className="container mx-auto px-6">
+          <div className="mb-8">
+            <p className="text-sm text-gray-600 mb-2">Brand</p>
+            <h2 className="text-2xl font-bold">Jobs, The Series, Others</h2>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+              <div className="mb-4 bg-white p-4">
+                <Image 
+                  src="/images/logo/changgong-logo.png"
+                  alt="Jobs Image"
+                  width={300}
+                  height={300}
+                  className="w-full"
+                />
+              </div>
+              <div>
+                <p className="text-xs text-gray-600 mb-1">JOBS · EDITION</p>
+                <h3 className="text-xl font-bold mb-2">EDITOR</h3>
+                <p className="text-sm text-gray-600">
+                  창공호는 개인의 브랜드 가치를 발견하고 성장시키는 창업 학회입니다. 
+                  다양한 분야의 전문가들과 함께 당신만의 브랜드를 만들어보세요.
+                </p>
+              </div>
+            </div>
+            
+            <div>
+              <div className="mb-4 bg-white p-4">
+                <Image 
+                  src="/images/logo/changgong-logo.png"
+                  alt="Jobs Image"
+                  width={300}
+                  height={300}
+                  className="w-full"
+                />
+              </div>
+              <div>
+                <p className="text-xs text-gray-600 mb-1">JOBS · CHEF</p>
+                <h3 className="text-xl font-bold mb-2">CHEF</h3>
+                <p className="text-sm text-gray-600">
+                  창공호는 개인의 브랜드 가치를 발견하고 성장시키는 창업 학회입니다. 
+                  다양한 분야의 전문가들과 함께 당신만의 브랜드를 만들어보세요.
+                </p>
+              </div>
+            </div>
+            
+            <div>
+              <div className="mb-4 bg-white p-4">
+                <Image 
+                  src="/images/logo/changgong-logo.png"
+                  alt="Jobs Image"
+                  width={300}
+                  height={300}
+                  className="w-full"
+                />
+              </div>
+              <div>
+                <p className="text-xs text-gray-600 mb-1">JOBS · NOVELIST</p>
+                <h3 className="text-xl font-bold mb-2">NOVELIST</h3>
+                <p className="text-sm text-gray-600">
+                  창공호는 개인의 브랜드 가치를 발견하고 성장시키는 창업 학회입니다. 
+                  다양한 분야의 전문가들과 함께 당신만의 브랜드를 만들어보세요.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Calendar Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col md:flex-row">
+            <div className="md:w-1/3 mb-8 md:mb-0">
+              <h2 className="text-2xl font-bold mb-2">Saturday,</h2>
+              <h2 className="text-2xl font-bold mb-2">15 Mar</h2>
+              <h2 className="text-2xl font-bold">2025</h2>
+            </div>
+            
+            <div className="md:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div>
+                <p className="text-xs text-gray-600 mb-1">• 10:00 AM</p>
+                <h3 className="text-lg font-bold mb-2">SWEET MEMORIES</h3>
+                <p className="text-sm text-gray-600 mb-4">Magazine No.97</p>
+                <p className="text-sm text-gray-600">Opening</p>
+              </div>
+              
+              <div>
+                <p className="text-xs text-gray-600 mb-1">• 12:00 PM</p>
+                <h3 className="text-lg font-bold mb-2">시즌4에 온걸 환영합니다</h3>
+                <p className="text-sm text-gray-600 mb-4">창업 아이디어 대회</p>
+                <p className="text-sm text-gray-600">창공호 본관</p>
+              </div>
+              
+              <div>
+                <p className="text-xs text-gray-600 mb-1">• 02:00 PM</p>
+                <h3 className="text-lg font-bold mb-2">Contemporary Issue</h3>
+                <p className="text-sm text-gray-600 mb-4">No.B-Lens</p>
+                <p className="text-sm text-gray-600">Opening</p>
+              </div>
+              
+              <div>
+                <p className="text-xs text-gray-600 mb-1">• 04:00 PM</p>
+                <h3 className="text-lg font-bold mb-2">학습과 경험을 통한 성장</h3>
+                <p className="text-sm text-gray-600 mb-4">워크샵 세미나</p>
+                <p className="text-sm text-gray-600">창공호 세미나실</p>
+              </div>
+              
+              <div>
+                <p className="text-xs text-gray-600 mb-1">• 06:00 PM</p>
+                <h3 className="text-lg font-bold mb-2">창업자의 길</h3>
+                <p className="text-sm text-gray-600 mb-4">마케팅 전략 강연</p>
+                <p className="text-sm text-gray-600">창공호 본관</p>
+              </div>
+              
+              <div>
+                <p className="text-xs text-gray-600 mb-1">• 08:00 PM</p>
+                <h3 className="text-lg font-bold mb-2">Contemporary Issue</h3>
+                <p className="text-sm text-gray-600 mb-4">No.B-La Lune</p>
+                <p className="text-sm text-gray-600">Opening</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -252,6 +510,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-    </main>
+    </>
   )
 } 

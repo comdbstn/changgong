@@ -4,81 +4,87 @@ import Link from 'next/link'
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-white">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div>
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
-                <span className="text-white text-xl font-bold">C</span>
-              </div>
-              <span className="text-xl font-bold">창공호</span>
+    <footer className="bg-white border-t border-gray-200 py-12">
+      <div className="container mx-auto px-4">
+        <div className="flex flex-col md:flex-row justify-between">
+          <div className="mb-8 md:mb-0">
+            <Link href="/" className="text-2xl font-bold">B</Link>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div>
+              <h3 className="text-sm font-medium text-gray-900 mb-4">Company</h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link href="#" className="text-sm text-gray-600 hover:text-gray-900">
+                    Contact
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="text-sm text-gray-600 hover:text-gray-900">
+                    Media & Service
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="text-sm text-gray-600 hover:text-gray-900">
+                    Privacy
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="text-sm text-gray-600 hover:text-gray-900">
+                    Stockists
+                  </Link>
+                </li>
+              </ul>
             </div>
-            <p className="text-gray-400">
-              개개인의 브랜드를 가치있게 만드는 창업 학회
-            </p>
-          </div>
-          
-          <div>
-            <h3 className="text-lg font-semibold mb-4">프로그램</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link href="#" className="text-gray-400 hover:text-white transition-colors">
-                  브랜드 워크샵
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-gray-400 hover:text-white transition-colors">
-                  창업 멘토링
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-gray-400 hover:text-white transition-colors">
-                  브랜딩 실습
-                </Link>
-              </li>
-            </ul>
-          </div>
-          
-          <div>
-            <h3 className="text-lg font-semibold mb-4">커뮤니티</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link href="#" className="text-gray-400 hover:text-white transition-colors">
-                  활동 회원
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-gray-400 hover:text-white transition-colors">
-                  성공 사례
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-gray-400 hover:text-white transition-colors">
-                  파트너십
-                </Link>
-              </li>
-            </ul>
-          </div>
-          
-          <div>
-            <h3 className="text-lg font-semibold mb-4">문의하기</h3>
-            <ul className="space-y-2">
-              <li className="text-gray-400">
-                이메일: contact@changgong.com
-              </li>
-              <li className="text-gray-400">
-                전화: 02-123-4567
-              </li>
-              <li className="text-gray-400">
-                주소: 서울특별시 강남구
-              </li>
-            </ul>
+            
+            <div>
+              <h3 className="text-sm font-medium text-gray-900 mb-4">Inquiry</h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link href="#" className="text-sm text-gray-600 hover:text-gray-900">
+                    FAQ
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="text-sm text-gray-600 hover:text-gray-900">
+                    Review
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="text-sm font-medium text-gray-900 mb-4">Instagram</h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link href="#" className="text-sm text-gray-600 hover:text-gray-900">
+                    Facebook
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="text-sm text-gray-600 hover:text-gray-900">
+                    Youtube
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="text-sm font-medium text-gray-900 mb-4">B Cast</h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link href="#" className="text-sm text-gray-600 hover:text-gray-900">
+                    B Playlist
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
         
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-          <p>&copy; 2024 창공호. All rights reserved.</p>
+        <div className="mt-12 pt-8 border-t border-gray-200 text-sm text-gray-600">
+          <p>© 2025 B Media Company. All rights reserved.</p>
         </div>
       </div>
     </footer>
